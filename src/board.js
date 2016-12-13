@@ -26,4 +26,8 @@ Board.prototype.filled = function (i, j) {
   return isFilled;
 };
 
+Board.prototype.checkBoard = function () {
+  return this.board;
+};
+
 export default Board;
