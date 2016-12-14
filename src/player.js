@@ -9,7 +9,8 @@ Player.prototype.players = function (player1, player2) {
   this.player2 = player2;
 };
 
-Player.prototype.play = function (c,r) {
+Player.prototype.play = function (row,column) {
+  //if counter == 9 invoke won function and clear board
   if (this.counter === undefined){
     this.counter = 1;
   }
@@ -23,10 +24,10 @@ Player.prototype.play = function (c,r) {
     this.mark = "o";
   }
 
-  var isFilled  =  this.board.filled(c,r);
+  var isFilled  =  this.board.filled(row,column);
   var reply;
   if(isFilled === false){
-    reply = this.player + " picked spot " + "[" + c + "]" + "[" + r + "]";
+    reply = this.player + " picked spot " + "[" + row + "]" + "[" + column + "]";
     this.counter += 1;
   }
   else {

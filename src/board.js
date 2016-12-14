@@ -18,13 +18,13 @@ Board.prototype.empty = function () {
   }
 };
 
-Board.prototype.filled = function (c, r) {
+Board.prototype.filled = function (row, column) {
   var isFilled = false; // assuming its empty
-  if (this.board[c][r] !== undefined) { //if not empty
+  if (this.board[row][column] !== undefined) { //if not empty
     isFilled = true;  // its filled
   }
   if (isFilled === false) { // if empty fill
-    this.board[c][r] = "x";
+    this.board[row][column] = "x";
 
   }
   return isFilled;
