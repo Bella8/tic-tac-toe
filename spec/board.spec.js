@@ -25,7 +25,7 @@ describe('Board', function() {
     it('should return false if one spot is filled', function() {
       testBoard.board[0][1] = "O";
       expect(testBoard.filled(0,1)).toEqual(true);
-    })
+    });
   });
 
   describe('checkBoard', function() {
