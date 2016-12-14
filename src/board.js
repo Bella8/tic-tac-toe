@@ -15,13 +15,16 @@ Board.prototype.empty = function () {
       }
     }
     return isEmpty;
-  };
+  }
 };
 
-Board.prototype.filled = function (i, j) {
+Board.prototype.filled = function (c, r) {
   var isFilled = false;
-  if (this.board[i][j] !== undefined) {
+  if (this.board[c][r] !== undefined) {
     isFilled = true;
+  }
+  if (isFilled === false) {
+    this.board[c][r] = "x";
   }
   return isFilled;
 };
@@ -30,4 +33,5 @@ Board.prototype.checkBoard = function () {
   return this.board;
 };
 
+// TODO: implement clear board function
 export default Board;
