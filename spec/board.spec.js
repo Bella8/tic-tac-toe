@@ -44,4 +44,14 @@ describe('Board', function() {
     });
   });
 
+  describe('clearBoard', function() {
+    it('should clear board when starting a new game', function() {
+      testBoard.board[0][2] = "X";
+      expect(testBoard.clearBoard()).toEqual("Board has been cleared.");
+      expect(testBoard.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
+      expect(testBoard.checkBoard()).not.toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, "X", undefined ] ]);
+
+    });
+  });
+
 });
