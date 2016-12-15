@@ -27,13 +27,17 @@ Player.prototype.play = function (row,column) {
   var isFilled  =  this.board.filled(row,column);
   var reply;
   if(isFilled === false){
+    this.board.fill(row, column, this.mark);
     reply = this.player + " picked spot " + "[" + row + "]" + "[" + column + "]";
     this.counter += 1;
   }
   else {
     reply = "Spot taken! " + this.player + " try again.";
   }
+  // this.board.hasWon(this.counter);
   return reply;
+
+
 };
 
 export default Player;

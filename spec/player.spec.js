@@ -1,5 +1,5 @@
 import Player from 'player';
-import Board from 'board';
+
 describe('Player', function() {
   var testPlayer;
 

@@ -1,6 +1,7 @@
+
 var Board = function() {
+
   this.board = new Array(3);
-  // write a for loop
   this.board[0] = new Array(3);
   this.board[1] = new Array(3);
   this.board[2] = new Array(3);
@@ -23,11 +24,16 @@ Board.prototype.filled = function (row, column) {
   if (this.board[row][column] !== undefined) { //if not empty
     isFilled = true;  // its filled
   }
-  if (isFilled === false) { // if empty fill
-    this.board[row][column] = "x";
 
-  }
   return isFilled;
+};
+
+// Board.prototype.hasWon = function (counter) {
+//   this.game.won(counter);
+// };
+
+Board.prototype.fill = function (row, column, mark) {
+  this.board[row][column] = mark;
 };
 
 Board.prototype.checkBoard = function () {
