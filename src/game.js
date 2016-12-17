@@ -10,6 +10,9 @@ Game.prototype.players = function (player1, player2) {
 };
 
 Game.prototype.play = function (row,column) {
+//TODO: NEED TO FIGURE OUT WHY TIE DOES NOT WORK!
+
+  this.mark = "";
   //if counter == 9 invoke won function and clear board
   if (this.counter === undefined){
     this.counter = 1;
@@ -24,8 +27,10 @@ Game.prototype.play = function (row,column) {
     this.mark = "o";
   }
 
-  var isFilled  =  this.board.filled(row,column);
   var reply;
+  var winning = this.won();
+
+  var isFilled  =  this.board.filled(row,column);
   if(isFilled === false){
     this.board.fill(row, column, this.mark);
     reply = this.player + " picked spot " + "[" + row + "]" + "[" + column + "]";
@@ -34,7 +39,20 @@ Game.prototype.play = function (row,column) {
   else {
     reply = "Spot taken! " + this.player + " try again.";
   }
-  // this.board.hasWon(this.counter);
+
+  if (winning === true) {
+    if (this.wonMark === 'x') {
+      reply = this.player1 + " has won!";
+    }
+    else if (this.wonMark === 'o') {
+      reply = this.player2 + " has won!";
+    }
+  }
+  else if (this.counter === 9) {
+    console.log("inside haswon false statement");
+    reply = "It's a tie!";
+  }
+
   return reply;
 };
 
@@ -44,15 +62,15 @@ Game.prototype.won = function () {
 
   // create horizontal, vertical, and diagonal functions and call them in won
 
-  this.won = false;
-  this.mark = "";
+  this.hasWon = false;
+  this.wonMark = "";
   this.reply = "";
 
   //horizontal
   for (var index = 0; index < this.board.board.length; index++) {
     if (this.board.board[index][0] === this.board.board[index][1] && this.board.board[index][1] === this.board.board[index][2] && this.board.board[index][0] !== undefined) {
-        this.won = true;
-        this.mark = this.board.board[index][0];
+        this.hasWon = true;
+        this.wonMark = this.board.board[index][0];
       }
   }
 
@@ -60,16 +78,21 @@ Game.prototype.won = function () {
 
   //vertical
 
-  if (this.won === true) {
-    if (this.mark === 'x') {
-      this.reply = this.player1 + " has won!";
-    }
-    else if (this.mark === 'o') {
-      this.reply = this.player2 + " has won!";
-    }
-    return this.reply;
-  }
+  // if (this.hasWon === true) {
+  //   if (this.wonMark === 'x') {
+  //     this.reply = this.player1 + " has won!";
+  //   }
+  //   else if (this.wonMark === 'o') {
+  //     this.reply = this.player2 + " has won!";
+  //   }
+  //   return this.reply;
+  // }
+  // if (this.hasWon !== true && counter === 9) {
+  //   this.reply = "It's a tie!";
+  //   return this.reply;
+  // }
 
+  return this.hasWon;
 };
 //once won = true or board is filled end the game, clear the board
 // Have you been filled up?  Then determine of worn or tie?

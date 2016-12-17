@@ -59,9 +59,24 @@ describe('Game', function() {
         testGame.play(1, 1);
         testGame.play(2, 1);
         testGame.play(1, 2);
-        console.log(testGame.board);
-        expect(testGame.won()).toEqual("Beylul has won!");
+        // console.log(testGame.board);
+        expect(testGame.won()).toEqual(true);
       });
+
+      it('should return a tie if no win and board is full', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(0, 0); //x
+        testGame.play(0, 1); //o
+        testGame.play(0, 2); //x
+        testGame.play(1, 0); //o
+        testGame.play(1, 1); //x
+        testGame.play(2, 2); //o
+        testGame.play(1, 2); //x
+        testGame.play(2, 1); //o
+        // testGame.play(2, 0); //x
+        console.log(testGame.board.board);
+        expect(testGame.play(2, 0)).toEqual("It's a tie!");
+      })
 
     });
   });
