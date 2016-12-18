@@ -51,18 +51,102 @@ describe('Game', function() {
     });
 
     describe('won', function() {
-      it('should check for a win if either player has won', function() {
+      it('should check for a win if either player has won horizontal middle', function() {
         testGame.players("Beylul", "Yeni");
-        // console.log(testGame.player1);
         testGame.play(1, 0);
         testGame.play(0, 1);
         testGame.play(1, 1);
         testGame.play(2, 1);
         testGame.play(1, 2);
-        console.log(testGame.board);
+        expect(testGame.won()).toEqual("Beylul has won!");
+      });
+      it('should check for a win if either player has won horizontal top', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(1, 1);
+        testGame.play(0, 0);
+        testGame.play(1, 2);
+        testGame.play(0, 1);
+        testGame.play(2, 2);
+        testGame.play(0, 2);
+        expect(testGame.won()).toEqual("Yeni has won!");
+      });
+
+      it('should check for a win if either player has won horizontal bottom', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(2, 0);
+        testGame.play(1, 1);
+        testGame.play(2, 1);
+        testGame.play(1, 2);
+        testGame.play(2, 2);
         expect(testGame.won()).toEqual("Beylul has won!");
       });
 
+      it('should check for a win if either player has won verticaly left', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(1, 2);
+        testGame.play(0, 0);
+        testGame.play(1, 1);
+        testGame.play(1, 0);
+        testGame.play(2, 1);
+        testGame.play(2, 0);
+        console.log("hnu" + testGame.board);
+        expect(testGame.won()).toEqual("Yeni has won!");
+      });
+      it('should check for a win if either player has won verticaly middle', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(0, 0);
+        testGame.play(0, 1);
+        testGame.play(1, 0);
+        testGame.play(1, 1);
+        testGame.play(1, 2);
+        testGame.play(2, 1);
+        expect(testGame.won()).toEqual("Yeni has won!");
+      });
+      it('should check for a win if either player has won verticaly right', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(0, 2);
+        testGame.play(1, 1);
+        testGame.play(1, 2);
+        testGame.play(2, 1);
+        testGame.play(2, 2);
+        expect(testGame.won()).toEqual("Beylul has won!");
+      });
+
+      it('should check for a win if either player has won diagonaly left to right', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(0, 1);
+        testGame.play(0, 0);
+        testGame.play(0, 2);
+        testGame.play(1, 1);
+        testGame.play(1, 2);
+        testGame.play(2, 2);
+        console.log(testGame.board);
+        expect(testGame.won()).toEqual("Yeni has won!");
+      });
+      it('should check for a win if either player has won diagonaly right to left', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(0, 2);
+        testGame.play(0, 0);
+        testGame.play(1, 1);
+        testGame.play(1, 0);
+        testGame.play(2, 0);
+
+        expect(testGame.won()).toEqual("Beylul has won!");
+      });
+      it('should check for a win there is no win and the count is 9, then it\'s a tie.', function() {
+        testGame.players("Beylul", "Yeni");
+        testGame.play(1, 1);
+        testGame.play(0, 2);
+        testGame.play(2, 0);
+        testGame.play(2, 2);
+        testGame.play(0, 0);
+        testGame.play(2, 1);
+        testGame.play(0, 1);
+        testGame.play(1, 0);
+        testGame.play(1, 2);
+
+        expect(testGame.won()).toEqual("It's a tie");
+      });
     });
   });
 });
