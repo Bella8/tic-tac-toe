@@ -60,42 +60,56 @@ Game.prototype.play = function (row,column) {
 //move won into board
 Game.prototype.won = function () {
 
-  // create horizontal, vertical, and diagonal functions and call them in won
+  this.won = false;
+  this.mark = "";
 
-  this.hasWon = false;
-  this.wonMark = "";
-  this.reply = "";
 
   //horizontal
   for (var index = 0; index < this.board.board.length; index++) {
     if (this.board.board[index][0] === this.board.board[index][1] && this.board.board[index][1] === this.board.board[index][2] && this.board.board[index][0] !== undefined) {
-        this.hasWon = true;
-        this.wonMark = this.board.board[index][0];
-      }
+      this.won = true;
+      this.mark = this.board.board[index][0];
+    }
+    //vertical win
+    else if (this.board.board[0][index] === this.board.board[1][index] && this.board.board[1][index] === this.board.board[2][index] && this.board.board[0][index] !== undefined) {
+      this.won = true;
+      this.mark = this.board.board[0][index];
+    }
+
+  }
+  //diagonal
+  if (this.board.board[0][0] === this.board.board[1][1] && this.board.board[1][1] === this.board.board[2][2] && this.board.board[1][1] !== undefined) {
+    this.won = true;
+    this.mark = this.board.board[1][1];
+  }
+  else if (this.board.board[0][2] === this.board.board[1][1] && this.board.board[1][1] === this.board.board[2][0] && this.board.board[1][1] !== undefined) {
+    this.won = true;
+    this.mark = this.board.board[1][1];
   }
 
-  //diagonal
+  if (this.won === true) {
+    if (this.mark === 'x') {
+      this.reply = this.player1 + " has won!";
+    }
+    else if (this.mark === 'o') {
+      this.reply = this.player2 + " has won!";
+    }
+    // console.log(this.board.checkBoard());
+    this.board.clearBoard();
+    // console.log(this.board.checkBoard());
+    return this.reply;
+  }
+  else if (this.counter === 10 && this.won === false){
+    this.reply = "It\'s a tie";
+  }
+  // console.log(this.board.checkBoard());
+  this.board.clearBoard();
+  // console.log(this.board.checkBoard());
+  return this.reply;
 
-  //vertical
-
-  // if (this.hasWon === true) {
-  //   if (this.wonMark === 'x') {
-  //     this.reply = this.player1 + " has won!";
-  //   }
-  //   else if (this.wonMark === 'o') {
-  //     this.reply = this.player2 + " has won!";
-  //   }
-  //   return this.reply;
-  // }
-  // if (this.hasWon !== true && counter === 9) {
-  //   this.reply = "It's a tie!";
-  //   return this.reply;
-  // }
-
-  return this.hasWon;
 };
 //once won = true or board is filled end the game, clear the board
-// Have you been filled up?  Then determine of worn or tie?
+// Have you been filled up?  Then determine of won or tie?
 
 //command query separation: a method should either tell you the state of something or change the state
 
