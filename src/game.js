@@ -57,16 +57,16 @@ Game.prototype.won = function () {
       this.won = true;
       this.mark = this.board.board[0][index];
     }
-}
+  }
   //diagonal
   if (this.board.board[0][0] === this.board.board[1][1] && this.board.board[1][1] === this.board.board[2][2] && this.board.board[1][1] !== undefined) {
-      this.won = true;
-      this.mark = this.board.board[1][1];
-    }
-    else if (this.board.board[0][2] === this.board.board[1][1] && this.board.board[1][1] === this.board.board[2][0] && this.board.board[1][1] !== undefined) {
-        this.won = true;
-        this.mark = this.board.board[1][1];
-      }
+    this.won = true;
+    this.mark = this.board.board[1][1];
+  }
+  else if (this.board.board[0][2] === this.board.board[1][1] && this.board.board[1][1] === this.board.board[2][0] && this.board.board[1][1] !== undefined) {
+    this.won = true;
+    this.mark = this.board.board[1][1];
+  }
 
   if (this.won === true) {
     if (this.mark === 'x') {
@@ -75,12 +75,18 @@ Game.prototype.won = function () {
     else if (this.mark === 'o') {
       this.reply = this.player2 + " has won!";
     }
-        return this.reply;
+    // console.log(this.board.checkBoard());
+    this.board.clearBoard();
+    // console.log(this.board.checkBoard());
+    return this.reply;
   }
   else if (this.counter === 10 && this.won === false){
-      this.reply = "It\'s a tie";
-          return this.reply;
-    }
+    this.reply = "It\'s a tie";
+  }
+  // console.log(this.board.checkBoard());
+  this.board.clearBoard();
+  // console.log(this.board.checkBoard());
+  return this.reply;
 };
 //once won = true or board is filled end the game, clear the board
 // Have you been filled up?  Then determine of won or tie?
