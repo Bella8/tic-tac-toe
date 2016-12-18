@@ -39,6 +39,7 @@ describe('Game', function() {
       testGame.play(0, 1);
       testGame.play(1, 1);
       expect(testGame.counter).toEqual(3);
+      expect(testGame.board.checkBoard()).toEqual([ [ undefined, 'x', undefined ], [ undefined, 'o', undefined ], [ undefined, undefined, undefined ] ]);
     });
 
     it('should ask the same player to go again if spot filled ', function() {
@@ -48,6 +49,7 @@ describe('Game', function() {
       testGame.play(0, 0);
       expect(testGame.play(0, 0)).toBe("Spot taken! Beylul try again.");
       expect(testGame.counter).toEqual(3);
+      expect(testGame.board.checkBoard()).toEqual([ [ 'o', undefined, undefined ], [ undefined, 'x', undefined ], [ undefined, undefined, undefined ] ]);
     });
 
     describe('won', function() {
@@ -90,6 +92,7 @@ describe('Game', function() {
         testGame.play(2, 1);
         testGame.play(2, 0);
         expect(testGame.won()).toEqual("Yeni has won!");
+        expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
       });
       it('should check for a win if either player has won verticaly middle', function() {
         testGame.players("Beylul", "Yeni");
@@ -100,6 +103,7 @@ describe('Game', function() {
         testGame.play(1, 2);
         testGame.play(2, 1);
         expect(testGame.won()).toEqual("Yeni has won!");
+        expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
       });
       it('should check for a win if either player has won verticaly right', function() {
         testGame.players("Beylul", "Yeni");
@@ -145,6 +149,7 @@ describe('Game', function() {
         testGame.play(1, 2);
 
         expect(testGame.won()).toEqual("It's a tie");
+        expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
       });
     });
   });
