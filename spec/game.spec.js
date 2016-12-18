@@ -89,7 +89,6 @@ describe('Game', function() {
         testGame.play(1, 0);
         testGame.play(2, 1);
         testGame.play(2, 0);
-        console.log("hnu" + testGame.board);
         expect(testGame.won()).toEqual("Yeni has won!");
       });
       it('should check for a win if either player has won verticaly middle', function() {
@@ -120,7 +119,7 @@ describe('Game', function() {
         testGame.play(1, 1);
         testGame.play(1, 2);
         testGame.play(2, 2);
-        console.log(testGame.board);
+
         expect(testGame.won()).toEqual("Yeni has won!");
       });
       it('should check for a win if either player has won diagonaly right to left', function() {

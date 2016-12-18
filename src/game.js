@@ -77,11 +77,10 @@ Game.prototype.won = function () {
     }
         return this.reply;
   }
-  else  {
+  else if (this.counter === 10 && this.won === false){
       this.reply = "It\'s a tie";
           return this.reply;
     }
-
 };
 //once won = true or board is filled end the game, clear the board
 // Have you been filled up?  Then determine of won or tie?
