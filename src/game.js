@@ -2,12 +2,14 @@ import Board from 'board';
 
 var Game = function() {
   this.board = new Board();
+  this.player1 = "x";
+  this.player2 = "o";
 };
 
-Game.prototype.players = function (player1, player2) {
-  this.player1 = player1;
-  this.player2 = player2;
-};
+// Game.prototype.players = function (player1, player2) {
+//   this.player1 = player1;
+//   this.player2 = player2;
+// };
 
 Game.prototype.play = function (row,column) {
 //TODO: NEED TO FIGURE OUT WHY TIE DOES NOT WORK!

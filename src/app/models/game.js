@@ -3,6 +3,8 @@ import Board from 'app/models/board';
 
 
 var Game = Backbone.Model.extend({
-
+  //  var board = new Board();
 
 });
+
+export default Game;
