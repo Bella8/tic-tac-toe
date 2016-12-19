@@ -28,7 +28,7 @@ Game.prototype.play = function (row,column) {
   }
 
   var reply;
-  var winning = this.won();
+  var winning = this.won;
 
   var isFilled  =  this.board.filled(row,column);
   if(isFilled === false){
@@ -49,7 +49,7 @@ Game.prototype.play = function (row,column) {
     }
   }
   else if (this.counter === 9) {
-    console.log("inside haswon false statement");
+    // console.log("inside haswon false statement");
     reply = "It's a tie!";
   }
 
@@ -100,7 +100,7 @@ Game.prototype.won = function () {
     return this.reply;
   }
   else if (this.counter === 10 && this.won === false){
-    this.reply = "It\'s a tie";
+    this.reply = "It's a tie";
   }
   // console.log(this.board.checkBoard());
   this.board.clearBoard();
