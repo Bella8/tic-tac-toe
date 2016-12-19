@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Tic-Tac-Toe</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <script src="/app.bundle.js" charset="utf-8"></script>
-  </body>
+<head>
+  <title>Tic-Tac-Toe</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header>
+    <h3> TIC TAC TOE </h3>
+  </header>
+
+ <!-- <script type="text/template" id="tmpl-board-info"> -->
+  <main id="game" class="small-centered">
+     <br>
+    <table id="board">
+      <tr class="row">
+        <td id="00"></td>
+        <td id="01"></td>
+        <td id="02"></td>
+      </tr>
+      <tr class="row">
+        <td id="10"></td>
+        <td id="11"></td>
+        <td id="12"></td>
+      </tr>
+      <tr class="row">
+        <td id="20"></td>
+        <td id="21"></td>
+        <td id="22"></td>
+      </tr>
+    </table>
+  </main>
+  <div class="row">
+    <br>
+    <br>
+    <br>
+    <div class="center button column" >
+      <button id="restart" class="center" >New game</button>
+    </div>
+  </div>
+  </script>
+  <!-- <script src="/app.bundle.js" charset="utf-8"></script> -->
+</body>
 </html>
