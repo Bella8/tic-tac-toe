@@ -11,36 +11,37 @@
     <h3> TIC TAC TOE </h3>
   </header>
 
- <!-- <script type="text/template" id="tmpl-board-info"> -->
-  <main id="game" class="small-centered">
+  <main id="main" class="row">
+     <table id="board-table" class="small-6 small-centered columns">
+     </table>
+     <div class="row">
      <br>
-    <table id="board">
-      <tr class="row">
-        <td id="00"></td>
-        <td id="01"></td>
-        <td id="02"></td>
-      </tr>
-      <tr class="row">
-        <td id="10"></td>
-        <td id="11"></td>
-        <td id="12"></td>
-      </tr>
-      <tr class="row">
-        <td id="20"></td>
-        <td id="21"></td>
-        <td id="22"></td>
-      </tr>
-    </table>
+     <br>
+     <br>
+     <div class="center button column" >
+     <button id="restart" class="center" >New game</button>
+   </div>
+ </div>
   </main>
-  <div class="row">
-    <br>
-    <br>
-    <br>
-    <div class="center button column" >
-      <button id="restart" class="center" >New game</button>
-    </div>
-  </div>
+
+  <script type="text/template" id="board">
+    <tr id="first" class="row">
+      <td id="zero-zero"><%- board[0][0] %></td>
+      <td id="zero-one"><%- board[0][1] %></td>
+      <td id="zero-two"><%- board[0][2] %></td>
+    </tr>
+    <tr id="second" class="row">
+      <td id="one-zero"><%- board[1][0] %></td>
+      <td id="one-one"><%- board[1][1] %></td>
+      <td id="one-two"><%- board[1][2] %></td>
+    </tr>
+    <tr id="third" class="row">
+      <td id="two-zero"><%- board[2][0] %></td>
+      <td id="two-one"><%- board[2][1] %></td>
+      <td id="two-two"><%- board[2][2] %></td>
+    </tr>
   </script>
-  <!-- <script src="/app.bundle.js" charset="utf-8"></script> -->
+  </script>
+  <script src="/app.bundle.js" charset="utf-8"></script>
 </body>
 </html>
