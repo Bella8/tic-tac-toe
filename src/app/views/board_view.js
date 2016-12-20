@@ -9,7 +9,7 @@ const BoardView = Backbone.View.extend({
     this.board = options.model;
   },
   render: function(){
-    var html = this.template({board: this.board.attributes.grid});
+    var html = this.template({board: this.board.board});
     this.$el.html(html);
 
     return this;
