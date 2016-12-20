@@ -4,11 +4,11 @@ import Board from 'board';
 // var testBoard = [[ , , ],[ , , ],[ , , ]];
 
 const Game = Backbone.Model.extend({
-  defaults:{
-    // grid: testBoard,
-    player1: "x",
-    player2: "o"
-  },
+  // defaults:{
+  //   // grid: testBoard,
+  //   player1: "x",
+  //   player2: "o"
+  // },
   initialize: function(){
     this.board = new Board();
     this.player1 = "x";
@@ -16,10 +16,7 @@ const Game = Backbone.Model.extend({
   },
 
   play: function(row, column) {
-    //TODO: NEED TO FIGURE OUT WHY TIE DOES NOT WORK!
-
     this.mark = "";
-    //if counter == 9 invoke won function and clear board
     if (this.counter === undefined){
       this.counter = 1;
     }
@@ -35,7 +32,6 @@ const Game = Backbone.Model.extend({
 
     var reply;
     var winning = this.won;
-
     var isFilled  =  this.board.filled(row,column);
     if(isFilled === false){
       this.board.fill(row, column, this.mark);
@@ -98,17 +94,13 @@ const Game = Backbone.Model.extend({
       else if (this.mark === 'o') {
         this.reply = this.player2 + " has won!";
       }
-      // console.log(this.board.checkBoard());
       this.board.clearBoard();
-      // console.log(this.board.checkBoard());
       return this.reply;
     }
     else if (this.counter === 10 && this.won === false){
       this.reply = "It's a tie";
     }
-    // console.log(this.board.checkBoard());
     this.board.clearBoard();
-    // console.log(this.board.checkBoard());
     return this.reply;
   },
 });
