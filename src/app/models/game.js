@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import Board from 'board';
+import Board from 'app/models/board';
 
 // var testBoard = [[ , , ],[ , , ],[ , , ]];
 
