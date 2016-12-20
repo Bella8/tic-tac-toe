@@ -1,9 +1,14 @@
 import Backbone from 'backbone';
 import Board from 'app/models/board';
 
+var testBoard = [[ , , ],[ , , ],[ , , ]];
 
-var Game = Backbone.Model.extend({
-  //  var board = new Board();
+const Game = Backbone.Model.extend({
+  initialize: function(){
+    this.board = new Board( {
+      grid: testBoard
+    });
+  }
 
 });
 
