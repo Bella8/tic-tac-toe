@@ -1,4 +1,4 @@
-import Game from 'game';
+import Game from 'app/models/game';
 // import Player from 'player';
 import Board from 'board';
 
