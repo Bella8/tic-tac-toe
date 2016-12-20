@@ -1,9 +1,18 @@
-import Board from 'board';
+import Board from 'app/models/board';
 
 describe('Board', function() {
   var testBoard;
   beforeEach(function() {
     testBoard = new Board();
+  });
+
+  describe('Constructor', function() {
+    it('Constructor Exists', function() {
+      expect(Board).toBeFunction();
+    });
+    it('Constructor Initializes attributes', function() {
+      expect(testBoard.board).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
+    });
   });
 
   describe('empty', function() {
@@ -12,7 +21,7 @@ describe('Board', function() {
     });
 
     it('should return false if one spot is filled', function() {
-      testBoard.board[0][1] = "X";
+      testBoard.board[0][0] = "X";
       expect(testBoard.empty()).toEqual(false);
     });
   });
@@ -22,8 +31,8 @@ describe('Board', function() {
       expect(testBoard.filled(0,0)).toEqual(false);
     });
 
-    it('should return false if one spot is filled', function() {
-      testBoard.board[0][1] = "O";
+    it('should return true if one spot is filled', function() {
+      testBoard.board[0][1] = "X";
       expect(testBoard.filled(0,1)).toEqual(true);
     });
   });
@@ -32,7 +41,7 @@ describe('Board', function() {
     it('should return an array with all the elements', function() {
       testBoard.board[0][2] = "X";
       expect(testBoard.checkBoard()).toEqual([ [ undefined, undefined, 'X' ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
-      expect(testBoard.checkBoard()).not.toEqual([ [ "O", "O", 'X' ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
+      expect(testBoard.checkBoard()).not.toEqual([[ ,"O","X"],[ , , ],[ , , ]]);
     });
 
     it('should have a length of 3', function() {
@@ -49,7 +58,7 @@ describe('Board', function() {
       testBoard.board[0][2] = "X";
       expect(testBoard.clearBoard()).toEqual("Board has been cleared.");
       expect(testBoard.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
-      expect(testBoard.checkBoard()).not.toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, "X", undefined ] ]);
+      expect(testBoard.checkBoard()).not.toEqual([[ , ,"X"],[ , , ],[ , , ]]);
 
     });
   });
