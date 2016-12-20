@@ -18,6 +18,14 @@ const GameView = Backbone.View.extend({
     });
     board.render();
     return this;
+  },
+
+  events: {
+    'click #restart': 'newGame'
+  },
+
+  newGame: function(event) {
+    console.log(event.target.id);
   }
 
 });

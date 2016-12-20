@@ -17,14 +17,9 @@ const BoardView = Backbone.View.extend({
 
   events: {
     "click": "clickBox",
-    'click #restart': 'newGame' //does not work
   },
 
   clickBox: function(event) {
-    console.log(event.target.id);
-  },
-
-  newGame: function(event) {
     console.log(event.target.id);
   }
 });
