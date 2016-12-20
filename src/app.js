@@ -1,13 +1,18 @@
+import Backbone from 'backbone';
+import $ from 'jquery';
+import Board from 'app/models/board';
+import BoardView from 'app/views/board_view';
 import Game from 'app/models/game';
 import GameView from 'app/views/game_view';
 
-var game = new Game({
-//players
-// new board defult 
+$(document).ready(function() {
 
-});
+  var game = new Game();
 
-var gameview = new GameView ({
-  el: "#game",
-  model: game
-});
+  var gameView = new GameView ({
+    el: "main",
+    model: game.board
+  });
+
+  gameView.render();
+})

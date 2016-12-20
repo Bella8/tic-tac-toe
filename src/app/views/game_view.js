@@ -1,25 +1,23 @@
-import $ from 'jquery';
 import Backbone from 'backbone';
-// import _ from 'underscore';
-// import BoardView from 'app/views/board_view';
+import $ from 'jquery';
+import _ from 'underscore';
+import BoardView from 'app/views/board_view';
 
 
-var GameView = Backbone.View.extend({
-  initialize: function() {
-    this.render();
+const GameView = Backbone.View.extend({
+  initialize: function(options) {
+    this.board = options.model;
+    this.boardTemplate = _.template($("#board").html());
   },
 
-  events: {
-    'click #restart': 'newGame',
-    'click td': 'fillSquare',
-  },
-
-  newGame: function(e) {
-     console.log("new game clicked");
-  },
-
-  fillSquare: function(e) {
-    console.log("in TD");
+  render: function() {
+    var board = new BoardView({
+      el: '#board-table',
+      model: this.board,
+      template: this.boardTemplate
+    });
+    board.render();
+    return this;
   }
 
 });
