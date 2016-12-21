@@ -20,7 +20,7 @@ const GameView = Backbone.View.extend({
       game: this.model
     });
     board.render();
-    console.log("in boardview render");
+    // console.log("in boardview render");
     return this;
   },
 

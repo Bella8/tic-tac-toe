@@ -48,7 +48,7 @@ const Game = Backbone.Model.extend({
       }
     }
     console.log(reply);
-    // return reply;
+    return reply;
   },
 
   won: function() {

@@ -22,7 +22,7 @@ const BoardView = Backbone.View.extend({
   },
 
   clickBox: function(event) {
-    console.log(event.target.id);
+    // console.log(event.target.id);
     var tagId = event.target.id;
     var split = tagId.split("-");
 
