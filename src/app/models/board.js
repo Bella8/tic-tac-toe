@@ -1,19 +1,13 @@
 import Backbone from 'backbone';
-// import Game from './game';
 
 var Board = Backbone.Model.extend({
-  // defaults: {
-  //   grid: [[ , , ],[ , , ],[ , , ]]
-  //   // mark: ['x', 'o'],
-  //   // players: [],
-  //   // counter: 0
-  // },
 
   initialize: function() {
     this.board = new Array(3);
     this.board[0] = new Array(3);
     this.board[1] = new Array(3);
     this.board[2] = new Array(3);
+
   },
 
   empty: function () {
@@ -52,6 +46,7 @@ var Board = Backbone.Model.extend({
     }
   }
   var reply = "Board has been cleared.";
+  this.trigger('change');
   return reply;
 }
 });

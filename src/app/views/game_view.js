@@ -8,6 +8,7 @@ const GameView = Backbone.View.extend({
   initialize: function(options) {
     this.board = this.model.board;
     this.boardTemplate = _.template($("#board").html());
+    _.bindAll(this, "render");
     this.listenTo(this.model, 'change', this.render);
   },
 
@@ -28,7 +29,8 @@ const GameView = Backbone.View.extend({
   },
 
   newGame: function(event) {
-    console.log(event.target.id);
+    this.board.clearBoard();
+    this.render();
   }
 });
 
