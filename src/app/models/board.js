@@ -10,7 +10,6 @@ var Board = Backbone.Model.extend({
   // },
 
   initialize: function() {
-
     this.board = new Array(3);
     this.board[0] = new Array(3);
     this.board[1] = new Array(3);
@@ -34,7 +33,6 @@ var Board = Backbone.Model.extend({
     if (this.board[row][column] !== undefined) { //if not empty
       isFilled = true;  // its filled
     }
-
     return isFilled;
   },
 

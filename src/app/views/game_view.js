@@ -6,17 +6,20 @@ import BoardView from 'app/views/board_view';
 
 const GameView = Backbone.View.extend({
   initialize: function(options) {
-    this.board = options.model;
+    this.board = this.model.board;
     this.boardTemplate = _.template($("#board").html());
+    this.listenTo(this.model, 'change', this.render);
   },
 
   render: function() {
     var board = new BoardView({
       el: '#board-table',
       model: this.board,
-      template: this.boardTemplate
+      template: this.boardTemplate,
+      game: this.model
     });
     board.render();
+    console.log("in boardview render");
     return this;
   },
 
@@ -27,7 +30,6 @@ const GameView = Backbone.View.extend({
   newGame: function(event) {
     console.log(event.target.id);
   }
-
 });
 
 export default GameView;

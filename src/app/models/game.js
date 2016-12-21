@@ -13,6 +13,7 @@ const Game = Backbone.Model.extend({
     this.board = new Board();
     this.player1 = "x";
     this.player2 ="o";
+    this.counter = 1;
   },
 
   play: function(row, column) {
@@ -37,6 +38,7 @@ const Game = Backbone.Model.extend({
       this.board.fill(row, column, this.mark);
       reply = this.player + " picked spot " + "[" + row + "]" + "[" + column + "]";
       this.counter += 1;
+      this.trigger('change'); // to trigger render for each play
     }
     else {
       reply = "Spot taken! " + this.player + " try again.";
@@ -54,11 +56,9 @@ const Game = Backbone.Model.extend({
       // console.log("inside haswon false statement");
       reply = "It's a tie!";
     }
-
     return reply;
   },
 
-  //move won into board
   won: function() {
 
     this.won = false;

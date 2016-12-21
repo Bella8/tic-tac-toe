@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   var gameView = new GameView ({
     el: "main",
-    model: game.board
+    model: game
   });
 
   gameView.render();
