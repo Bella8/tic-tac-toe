@@ -36,7 +36,7 @@ const BoardView = Backbone.View.extend({
     var row = positionGrid[split[0]];
     var column = positionGrid[split[1]];
     this.game.play(row, column);
-    // this.game.reply
+    $(".winner").html(this.game.reply);
   }
 });
 

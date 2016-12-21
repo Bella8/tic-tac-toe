@@ -23,36 +23,36 @@ const Game = Backbone.Model.extend({
       this.mark = "o";
     }
 
-    var reply;
+    this.reply = "";
     var winning = this.won();
     var isFilled  =  this.board.filled(row,column);
     if(isFilled === false && winning === false){
       this.board.fill(row, column, this.mark);
       this.counter += 1;
       this.trigger('change'); // to trigger render for each play
+      var  counter = this.counter;
     }
 
+    var isWinning = this.won();
 
-
-    if (winning === true) {
-      if (reply === undefined) {
-        if (this.wonMark === 'x') {
-          reply = this.player1 + " has won!";
-        }
-        else if (this.wonMark === 'o') {
-          reply = this.player2 + " has won!";
-        }
+    if (isWinning === true && this.reply === "") {
+      if (this.wonMark === 'x') {
+        this.reply = this.player1 + " has won!";
       }
-      else if (this.counter === 9) {
-
-        reply = "It's a tie!";
-        this.reply = reply;
+      else if (this.wonMark === 'o') {
+        this.reply = this.player2 + " has won!";
       }
-      //figure out how to display it only once
-      $( ".winner" ).append( reply );
+      if (counter === this.counter) {
+      }
+      this.counter = 1;
     }
-    console.log(reply);
-    return reply;
+    if (this.counter === 10 && isWinning === false) {
+      this.reply = "It's a tie!";
+      this.counter = 1;
+    }
+    // console.log("this.counter = " + this.counter);
+    // console.log("counter is " + counter);
+    return this.reply;
   },
 
   won: function() {
@@ -83,10 +83,8 @@ const Game = Backbone.Model.extend({
       this.wonMark = this.board.board[1][1];
     }
     if (this.hasWon === true) {
-      // this.board.clearBoard();
     }
     return this.hasWon;
-
   },
 });
 

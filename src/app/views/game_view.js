@@ -20,7 +20,6 @@ const GameView = Backbone.View.extend({
 
   render: function() {
     this.boardView.render();
-    // console.log("in boardview render");
     return this;
   },
 
@@ -30,6 +29,8 @@ const GameView = Backbone.View.extend({
 
   newGame: function(event) {
     this.board.clearBoard();
+    // this.board.counter = 1;
+    $(".winner").html("");
     this.render();
   }
 });
