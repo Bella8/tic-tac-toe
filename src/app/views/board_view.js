@@ -22,6 +22,7 @@ const BoardView = Backbone.View.extend({
   },
 
   clickBox: function(event) {
+    event.preventDefault();
     // console.log(event.target.id);
     var tagId = event.target.id;
     var split = tagId.split("-");
@@ -35,6 +36,7 @@ const BoardView = Backbone.View.extend({
     var row = positionGrid[split[0]];
     var column = positionGrid[split[1]];
     this.game.play(row, column);
+    // this.game.reply
   }
 });
 

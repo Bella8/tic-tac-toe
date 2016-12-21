@@ -10,16 +10,16 @@ const GameView = Backbone.View.extend({
     this.boardTemplate = _.template($("#board").html());
     _.bindAll(this, "render");
     this.listenTo(this.model, 'change', this.render);
-  },
-
-  render: function() {
-    var board = new BoardView({
+    this.boardView = new BoardView({
       el: '#board-table',
       model: this.board,
       template: this.boardTemplate,
       game: this.model
     });
-    board.render();
+  },
+
+  render: function() {
+    this.boardView.render();
     // console.log("in boardview render");
     return this;
   },

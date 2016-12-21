@@ -1,4 +1,5 @@
 import Backbone from 'backbone';
+import $ from 'jquery';
 import Board from 'app/models/board';
 
 
@@ -45,7 +46,10 @@ const Game = Backbone.Model.extend({
       else if (this.counter === 9) {
 
         reply = "It's a tie!";
+        this.reply = reply;
       }
+      //figure out how to display it only once
+      $( ".winner" ).append( reply );
     }
     console.log(reply);
     return reply;
