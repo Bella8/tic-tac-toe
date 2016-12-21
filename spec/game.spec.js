@@ -14,21 +14,18 @@ describe('Game', function() {
    it('Constructor Initializes attributes', function() {
      expect(testGame.player1).toEqual("x");
      expect(testGame.player2).toEqual("o");
+     expect(testGame.counter).toEqual(1);
+     expect(testGame.mark).toEqual("x");
    });
  });
 
-  describe('players', function() {
-    it('should assign both players', function() {
-      expect(testGame.player1).toEqual("x");
-      expect(testGame.player2).toEqual("o");
-    });
-  });
 
   describe('play', function() {
     it('should assign the right mark and player', function() {
       testGame.play(0, 1);
       expect(testGame.player).toBe("x");
-      expect(testGame.mark).toEqual("x");
+      // console.log("this is mark " + testGame.mark);
+      // expect(testGame.mark).toEqual("x");
     });
 
     it('should fill the spot with the designated mark, if empty', function() {
@@ -58,7 +55,8 @@ describe('Game', function() {
         testGame.play(1, 1);
         testGame.play(2, 1);
         testGame.play(1, 2);
-        expect(testGame.won()).toEqual("x has won!");
+        // expect(testGame.play(1, 2)).toEqual("x has won!");
+        expect(testGame.won()).toEqual(true);
       });
 
       it('should check for a win if either player has won horizontal top', function() {
@@ -68,7 +66,8 @@ describe('Game', function() {
         testGame.play(0, 1);
         testGame.play(2, 2);
         testGame.play(0, 2);
-        expect(testGame.won()).toEqual("o has won!");
+        // expect(testGame.won()).toEqual("o has won!");
+        expect(testGame.won()).toEqual(true);
       });
 
       it('should check for a win if either player has won horizontal bottom', function() {
@@ -77,7 +76,8 @@ describe('Game', function() {
         testGame.play(2, 1);
         testGame.play(1, 2);
         testGame.play(2, 2);
-        expect(testGame.won()).toEqual("x has won!");
+        // expect(testGame.won()).toEqual("x has won!");
+        expect(testGame.won()).toEqual(true);
       });
 
       it('should check for a win if either player has won verticaly left', function() {
@@ -87,8 +87,9 @@ describe('Game', function() {
         testGame.play(1, 0);
         testGame.play(2, 1);
         testGame.play(2, 0);
-        expect(testGame.won()).toEqual("o has won!");
-        expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
+        // expect(testGame.won()).toEqual("o has won!");
+        expect(testGame.won()).toEqual(true);
+        // expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
       });
 
       it('should check for a win if either player has won verticaly middle', function() {
@@ -98,8 +99,9 @@ describe('Game', function() {
         testGame.play(1, 1);
         testGame.play(1, 2);
         testGame.play(2, 1);
-        expect(testGame.won()).toEqual("o has won!");
-        expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
+        // expect(testGame.won()).toEqual("o has won!");
+        expect(testGame.won()).toEqual(true);
+        // expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
       });
 
       it('should check for a win if either player has won verticaly right', function() {
@@ -108,7 +110,8 @@ describe('Game', function() {
         testGame.play(1, 2);
         testGame.play(2, 1);
         testGame.play(2, 2);
-        expect(testGame.won()).toEqual("x has won!");
+        // expect(testGame.won()).toEqual("x has won!");
+        expect(testGame.won()).toEqual(true);
       });
 
       it('should check for a win if either player has won diagonaly left to right', function() {
@@ -119,7 +122,8 @@ describe('Game', function() {
         testGame.play(1, 2);
         testGame.play(2, 2);
 
-        expect(testGame.won()).toEqual("o has won!");
+        // expect(testGame.won()).toEqual("o has won!");
+        expect(testGame.won()).toEqual(true);
       });
       it('should check for a win if either player has won diagonaly right to left', function() {
         testGame.play(0, 2);
@@ -127,7 +131,9 @@ describe('Game', function() {
         testGame.play(1, 1);
         testGame.play(1, 0);
         testGame.play(2, 0);
-        expect(testGame.won()).toEqual("x has won!");
+        console.log(testGame.board.board);
+        // expect(testGame.won()).toEqual("x has won!");
+        expect(testGame.won()).toEqual(true);
       });
 
       it('should check for a win there is no win and the count is 9, then it\'s a tie.', function() {
@@ -141,8 +147,9 @@ describe('Game', function() {
         testGame.play(1, 0);
         testGame.play(1, 2);
 
-        expect(testGame.won()).toEqual("It's a tie");
-        expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
+        // expect(testGame.won()).toEqual("It's a tie");
+        expect(testGame.won()).toEqual(false);
+        // expect(testGame.board.checkBoard()).toEqual([ [ undefined, undefined, undefined ], [ undefined, undefined, undefined ], [ undefined, undefined, undefined ] ]);
       });
     });
   });
