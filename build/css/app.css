@@ -1,53 +1,69 @@
-#first, #second {
- border-bottom: 4px solid #B9E9F0 ;
+@font-face {
+  font-family: 'CrayonFont';
+  src: url('crayon_font.ttf') format('truetype');
 }
 
-td[id*="-one"] {
- border-left: 4px solid #B9E9F0 ;
- border-right: 4px solid #B9E9F0 ;
+.winner {
+  font-family: 'CrayonFont', sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 80px;
+  background-image: url("/assets/Picture1.png");
+}
+
+.title {
+  font-family: 'CrayonFont', sans-serif;
+  font-size: 40px;
+}
+
+table {
+  width: 90%;
 }
 
 td {
- text-align: center;
- padding: 50px;
- font-size: 30px;
- background-image: url("/assets/Picture1.png");
+  width: 203px;
+  height: 173px;
+  font-family: 'CrayonFont', sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 80px;
+  background-image: url("/assets/Picture1.png");
+}
+
+#first, #second {
+  border-bottom: 4px solid white ;
+}
+
+td[id*="-one"] {
+  border-left: 4px solid white ;
+  border-right: 4px solid white ;
 }
 
 #board-table {
- background-color: white ;
+  background-color: white ;
 }
 
 
 header {
- text-align: center;
- margin-bottom: 30px;
- margin-top: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 body {
- background-color: white ;
+  background-color: white ;
 }
 
 .button {
-     margin-right: 42%;  /* to center button*/
-     text-align: center;
-     border-radius: 25px;
-     max-width: 150px;
-     max-height: 100px;
+  margin-right: 42%;  /* to center button*/
+  text-align: center;
+  border-radius: 25px;
+  max-width: 150px;
+  max-height: 100px;
 
- }
-#restart {
-     font-size: 12pt;
-     color: white;
-     padding: 5px 15px 5px 15px;
- }
-
-.winner {
-  margin-right: 10%;
 }
-/*
-#board{
-  background-color: blue;
- background-image: url("/assets/Picture1.png");
-}*/
+#restart {
+  font-size: 12pt;
+  color: white;
+  padding: 5px 15px 5px 15px;
+}
