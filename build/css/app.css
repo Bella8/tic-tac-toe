@@ -11,6 +11,7 @@ td {
  text-align: center;
  padding: 50px;
  font-size: 30px;
+ background-image: url("/assets/Picture1.png");
 }
 
 #board-table {
@@ -41,3 +42,12 @@ body {
      color: white;
      padding: 5px 15px 5px 15px;
  }
+
+.winner {
+  margin-right: 10%;
+}
+/*
+#board{
+  background-color: blue;
+ background-image: url("/assets/Picture1.png");
+}*/
